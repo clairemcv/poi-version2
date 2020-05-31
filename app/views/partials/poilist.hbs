@@ -1,0 +1,37 @@
+<section class="ui raised segment">
+    <div class="ui grid">
+            <div class="ui stacked segment">
+        <article class="fifteen wide column">
+            <table class="ui celled table segment">
+                <form action="/deletePoi" method="GET">
+                <thead>
+                <tr>
+                    <th>Created by</th>
+                    <th>Name</th>
+                    <th>Location</th>
+                    <th>Description</th>
+                    <th>Category</th>
+                    <th>Delete</th>
+                </tr>
+                </thead>
+                <tbody>
+                  {{#each poi}}
+                    <tr>
+                        <td>{{creator.firstName}} {{creator.lastName}}</td>
+                        <td> {{name}} </td>
+                        <td> {{location}} </td>
+                        <td> {{description}}</td>
+                        <td> {{category.title}}</td>
+                        <td><a href="/deletePoi/{{user._id}}" class="ui icon button">
+                                <i class="icon trash"></i>
+                            </a>
+                        </td>
+                    </tr>
+                  {{/each}}
+                </tbody>
+            </table>
+        </article>
+    </div>
+</section>
+</section>
+

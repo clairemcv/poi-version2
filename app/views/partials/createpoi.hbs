@@ -1,0 +1,41 @@
+<section class="ui raised segment">
+    <div class="ui grid ">
+        <aside class="ui six wide column"><img src="images/poi.jpg" class="ui medium image" /></aside>
+        <div class="ui ten wide column fluid form">
+
+             <form action="/createPoi" method="POST">
+                    <form class="ui form">
+                        <div class="field">
+                            <label>Name</label>
+                            <input type="text" name="name" placeholder="Name">
+                        </div>
+                        <div class="field">
+                            <label>Location</label>
+                            <input type="text" name="location" placeholder="Location">
+                        </div>
+                        <div class="field">
+                            <label>Description</label>
+                            <input type="text" name="description" placeholder="Description" size="200">
+                        </div>
+                        <div class="grouped inline fields">
+                            <h3> Select Category </h3>
+                            {{#each categories}}
+                                <div class="field">
+                                    <div class="ui radio checkbox">
+                                        <input type="radio" name="category" value="{{title}}">
+                                        <label>{{title}}</label>
+                                    </div>
+                                </div>
+                            {{/each}}
+                        </div>
+                        <div class="field">
+                            <input type="submit" value="Upload" class="ui blue submit button">
+                    </form>
+                </form>
+            </div>
+        </div>
+
+
+
+
+</section>

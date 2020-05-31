@@ -1,0 +1,42 @@
+{
+  "name": "poi-version2",
+  "version": "1.0.0",
+  "description": "points of interest in ireland api ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "keywords": [
+    "poi",
+    "ireland"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@hapi/boom": "^9.0.0",
+    "@hapi/cookie": "^11.0.0",
+    "@hapi/hapi": "^19.1.1",
+    "@hapi/inert": "^6.0.1",
+    "@hapi/joi": "^17.1.0",
+    "@hapi/vision": "^6.0.0",
+    "cloudinary": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "handlebars": "^4.7.3",
+    "mais-mongoose-seeder": "^1.0.7",
+    "mongoose": "^5.9.2"
+  },
+  "engines": {
+    "node": "^12.0.0"
+  },
+  "devDependencies": {
+    "axios": "^0.19.2",
+    "chai": "^4.2.0",
+    "mocha": "^7.2.0",
+    "prettier": "^1.19.1"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "printWidth": 120
+  }
+}
