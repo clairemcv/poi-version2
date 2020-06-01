@@ -1,43 +1,20 @@
 'use strict';
 
 const assert = require('chai').assert;
-const axios = require('axios');
+const PoiService = require('./poi-service');
+const fixtures = require('./fixtures.json');
+const _ = require('lodash');
 
 suite('Category API tests', function () {
 
-  test('get categories', async function () {
-    const response = await axios.get('http://localhost:3000/api/categories');
-    const categories = response.data;
-    assert.equal(3, categories.length);
+  let categories = fixtures.categories;
+  let newCategory = fixtures.newCategory;
 
-    assert.equal(categories[0].title, 'Family friendly');
+  const poiService = new PoiService('http://localhost:3000');
 
-    assert.equal(categories[1].title, 'Accessible');
-
-    assert.equal(categories[2].title, 'Difficult terrain');
-  });
-
-  test('get one category', async function () {
-    let response = await axios.get('http://localhost:3000/api/categories');
-    const categories = response.data;
-    assert.equal(3, categories.length);
-
-    const oneCategoryUrl = 'http://localhost:3000/api/categories/' + categories[0]._id;
-    response = await axios.get(oneCategoryUrl);
-    const oneCategory = response.data;
-
-    assert.equal(oneCategory.title, 'Family friendly');
-  });
   test('create a category', async function () {
-    const categoriesUrl = 'http://localhost:3000/api/categories';
-    const newCategory = {
-      title: 'Beauty Spot',
-    };
-
-    const response = await axios.post(categoriesUrl, newCategory);
-    const returnedCategory = response.data;
-    assert.equal(201, response.status);
-
-    assert.equal(returnedCategory.title, 'Beauty Spot');
+    const returnedCategory = await poiService.createCategory(newCategory);
+    assert(_.some([returnedCategory], newCategory), 'returnedCategory must be a superset of newCategory');
+    assert.isDefined(returnedCategory._id);
   });
 });
