@@ -1,7 +1,7 @@
 'use strict';
 
 const axios = require('axios');
-const baseUrl = 'http://localhost:3000';
+//const baseUrl = 'http://localhost:3000';
 
 class CategoryService {
   constructor(baseUrl) {
@@ -38,14 +38,17 @@ class CategoryService {
   }
 
   async getUsers() {
-    const response = await axios.get(this.baseUrl + '/api/users');
-    return response.data;
+    try {
+      const response = await axios.get(this.baseUrl + '/api/users');
+      return response.data;
+    } catch (e) {
+      return null;
+    }
   }
 
   async getUser(id) {
     try {
-      const response = await axios.get(this.baseUrl + '/api/user/' + id);
-      return response.data;
+      const response = await axios.get(this.baseUrl + '/api/users/' + id);
       return response.data;
     } catch (e) {
       return null;
@@ -53,8 +56,30 @@ class CategoryService {
   }
 
   async createUser(newUser) {
-    const response = await axios.post(this.baseUrl + '/api/users', newUser);
-    return response.data;
+    try {
+      const response = await axios.post(this.baseUrl + '/api/users', newUser);
+      return response.data;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  async deleteAllUsers() {
+    try {
+      const response = await axios.delete(this.baseUrl + '/api/users');
+      return response.data;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  async deleteOneUser(id) {
+    try {
+      const response = await axios.delete(this.baseUrl + '/api/users/' + id);
+      return response.data;
+    } catch (e) {
+      return null;
+    }
   }
 }
 

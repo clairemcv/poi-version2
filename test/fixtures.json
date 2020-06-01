@@ -1,4 +1,25 @@
 {
+  "categoryService": "http://localhost:3000",
+  "users": [
+    {
+      "firstName": "Mary",
+      "lastName": "Black",
+      "email": "mary@email.com",
+      "password": "secret"
+    },
+    {
+      "firstName": "Paul",
+      "lastName": "Downey",
+      "email": "paul@email.com",
+      "password": "secret"
+    },
+    {
+      "firstName": "Claire",
+      "lastName": "Downey",
+      "email": "claire@email.com",
+      "password": "secret"
+    }
+  ],
   "categories": [
    {
     "title": "Family friendly"
@@ -15,93 +36,29 @@
     "title": "Beauty Spot"
   },
 
-
-  "poi detail": [
+  "poiService": "http://localhost:3000",
+  "poiDetail": [
    {
      "name": "Cheek Point",
      "location": "Waterford",
-     "description":"A rocky landing at the best of times, conveniently placed for a pitstop on a trip up or down the Barrow, the Nore, or the Suir. Situated river right at the tight bend where the Suir almost becomes the sea. At LW keep away from the little harbour, the whole area round which is very silted.",
-     "creator": "Mary Black",
-     "category": "Difficult terrain"
+     "description":"A rocky landing at the best of times, conveniently placed for a pitstop on a trip up or down the Barrow, the Nore, or the Suir. Situated river right at the tight bend where the Suir almost becomes the sea. At LW keep away from the little harbour, the whole area round which is very silted."
   },
   {
      "name": "Cape Clear Island",
      "location": "Cork",
-     "description":"This Gaeltacht island is truly the Land’s End of SW Ireland. Mountainous, steep, and imposing, the island is home in winter to about 135 people or 110 voters and many more in summer. A ferry runs all year from Baltimore – twice daily in winter, more often in summer. In summer, there is also a ferry from Schull. The island has pubs, B&Bs, restaurants, two hostels, a well-appointed campsite, windmills, very basic shops and provisions, and the most famous bird observatory in the country. The co-operative club serves excellent meals and drink on the harbour, and Cotter’s Bar is also located here. There is a third wee pub up at the waist. A fourth, modern pub, Danny Mike’s, has been built just S of the waist, and excellent food may be had from breakfast to dinner time.",
-     "creator": "Mary Black",
-     "category": "Accessible"
+     "description":"This Gaeltacht island is truly the Land’s End of SW Ireland. Mountainous, steep, and imposing, the island is home in winter to about 135 people or 110 voters and many more in summer. A ferry runs all year from Baltimore – twice daily in winter, more often in summer. In summer, there is also a ferry from Schull. The island has pubs, B&Bs, restaurants, two hostels, a well-appointed campsite, windmills, very basic shops and provisions, and the most famous bird observatory in the country. The co-operative club serves excellent meals and drink on the harbour, and Cotter’s Bar is also located here. There is a third wee pub up at the waist. A fourth, modern pub, Danny Mike’s, has been built just S of the waist, and excellent food may be had from breakfast to dinner time."
   },
   {
      "name": "Great Saltee Island",
      "location": "Wexford",
-     "description":"This is a beautiful island. Grazed and easily walked or camped on, this island is lovely and deservedly popular with Irish paddlers. The island is a famed bird-watching spot, and is often inhabited by birding visitors in season, mainly spring and autumn. Once inhabited by 20 people, the island became uninhabited relatively early by Irish island standards. There are monuments and references to Prince Michael of Saltee on the island. He bought the island in 1943, crowned himself Prince in 1972, and died in 1998.",
-     "creator": "Mary Black",
-     "category": "Accessible"
-  },
-  {
-     "name": "Hook Penninsula",
-     "location": "Wexford",
-     "description":"Hook Head is a popular kayaking and scuba diving area based on the main town Fethard. A very attractive area, there is almost always sheltered sea-going hereabouts, almost regardless of wind direction.  Beloved of divers, there is always calm water somewhere for the training of beginners. Out at the Head there are arches and blowholes, caves and wrecks, and clear shallow water mostly.  The extensive sand beaches at Duncannon and Fethard contrast with the rocky cliffs by the Head itself.  Across Waterford Harbour lies the beautiful fishing and tourist village of Dunmore East, to which excursions may be made, landing at the pier, which was the first ever built by Nimmo.",
-     "creator": "Mary Black",
-     "category": "Accessible"
-  },
-  {
-    "name": "Coney Island",
-    "location": "Sligo",
-    "description":"A rocky landing at the best of times, conveniently placed for a pitstop on a trip up or down the Barrow, the Nore, or the Suir. Situated river right at the tight bend where the Suir almost becomes the sea. At LW keep away from the little harbour, the whole area round which is very silted.",
-    "creator": "Paul Downey",
-    "category": "Difficult terrain"
-  },
-    {
-      "name": "Tory Island",
-      "location": "Donegal",
-      "description":"NNE of Bloody Foreland, Tory is named for the dramatic appearance of the high tors at its E end as seen from the mainland; this is the most remote inhabited Irish island and holds a special place in history. SPA Tory is the only inhabited island the entire of which is so designated. Storm Petrel, Tern, Chough, Corncrake, of which 10 males were calling in 2010.",
-      "creator": "Paul Downey",
-      "category": "Family friendly"
-    },
-    {
-      "name": "Belmullet",
-      "location": "Mayo",
-      "description":"Sheltered and easy access from Mayo’s western and northern coasts may be had through Belmullet. A lock-free canal is navigable to kayaks on at least the 2 hours either side of local HW. This gives easy passage from Blacksod Bay into Broad Haven. The canal has recently been made over. Belmullet is a most useful town on passage. A market town, all facilities are available.",
-      "creator": "Paul Downey",
-      "category": "Family friendly"
-    },
-    {
-      "name": "Crab Island",
-      "location": "Clare",
-      "description":"Crab Island is a small, rocky islet just off the pier at Doolin. It is best known these days for the reliable right-hand reef break off its SW side. Surfers ignore the nearby break on the mainland off Ballaghaline Point at R057-969, because it dumps. There is a stone building of indeterminate purpose on top of Crab, which looks like it might have been a wine cellar. Land onto a sheltered inlet on the NE side, which can be difficult, particularly in swell or at HW.",
-      "creator": "Claire Downey",
-      "category": "Family friendly"
-    },
-    {
-      "name": "Killiney Bay",
-      "location": "Dublin",
-      "description":"Between Dublin and Bray is a green belt which professional planners are determined to keep that way, and we wish their efforts well. Killiney Bay is where this green belt enters the sea. One of the prettiest bays around Dublin, road and place names fancifully reflect supposed Italian counterparts S of Rome.",
-      "creator": "Claire Downey",
-      "category": "Accessible"
-    },
-    {
-      "name": "Dalkey-Island",
-      "location": "Dublin",
-      "description":"An interesting small grassy island, it has a Martello Tower, a fort, black rabbits, goats and other furry creatures. No reliable water has been found but a well W of the church, just above the shore, is kept whitewashed. The views of Dublin Bay from both the Martello Tower and the ruined fort are well worth the trouble. Until a generation ago, the King of Dalkey Island was elected locally and crowned on the island, but the practice died out in the 1980s. History Roman coinage was found here dated to 352AD, so the Romans may have traded from a base here. Vikings named it 'Dalk Eyja' (“Thorn Island”) and the Irish name means the same “Deilg Inis”.",
-      "creator": "Claire Downey",
-      "category": "Accessible"
-    },
-    {
-      "name": "Coliemore Harbour",
-      "location": "Dublin",
-      "description":"Attractive little harbour on the Coliemore Road. Small pedestrian ferries ply to Dalkey Island on day trips. Much coarse bottom fishing goes on from the harbour walls. The harbour is very congested, and in swell, launching from the rather steep unsheltered slip can be tricky. It is best on the bottom third of the tide when sand is exposed. Water and toilet are available. A pretty place.",
-      "creator": "Paul Downey",
-      "category": "Family friendly"
-    }
+     "description":"This is a beautiful island. Grazed and easily walked or camped on, this island is lovely and deservedly popular with Irish paddlers. The island is a famed bird-watching spot, and is often inhabited by birding visitors in season, mainly spring and autumn. Once inhabited by 20 people, the island became uninhabited relatively early by Irish island standards. There are monuments and references to Prince Michael of Saltee on the island. He bought the island in 1943, crowned himself Prince in 1972, and died in 1998."
+  }
     ],
   "newPoiDetail":
   {
     "name": "Dunmore East",
     "location": "Waterford",
-    "description":"Dunmore East is a popular tourist and fishing village in County Waterford, Ireland. Situated on the west side of Waterford Harbour on Ireland's southeastern coast, it lies within the barony of Gaultier, a reference to the influx of Viking and Norman settlers in the area.",
-    "creator": "Paul Downey",
-    "category": "Family friendly"
+    "description":"Dunmore East is a popular tourist and fishing village in County Waterford, Ireland. Situated on the west side of Waterford Harbour on Ireland's southeastern coast, it lies within the barony of Gaultier, a reference to the influx of Viking and Norman settlers in the area."
   }
 
 }

@@ -1,6 +1,7 @@
 'use strict';
 
 const PoiDetail = require('../models/poidetail');
+const Boom = require('@hapi/boom');
 
 const Pois = {
   find: {
@@ -14,11 +15,11 @@ const Pois = {
     auth: false,
     handler: async function(request, h) {
       try {
-        const poidetail = await PoiDetail.findOne({ _id: request.params.id });
-        if (!poidetail) {
+        const poiDetail = await PoiDetail.findOne({ _id: request.params.id });
+        if (!poiDetail) {
           return Boom.notFound('No Poi with this id');
         }
-        return poidetail;
+        return poiDetail;
       } catch (err) {
         return Boom.notFound('No Poi with this id');
       }
