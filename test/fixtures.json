@@ -1,4 +1,21 @@
 {
+  "categories": [
+   {
+    "title": "Family friendly"
+  },
+  {
+    "title": "Accessible"
+  },
+  {
+    "title": "Difficult terrain"
+  }
+],
+  "new category":
+  {
+    "title": "Beauty Spot"
+  },
+
+
   "poi detail": [
    {
      "name": "Cheek Point",
