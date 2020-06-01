@@ -37,7 +37,7 @@
   },
 
   "poiService": "http://localhost:3000",
-  "poiDetail": [
+  "poi": [
    {
      "name": "Cheek Point",
      "location": "Waterford",

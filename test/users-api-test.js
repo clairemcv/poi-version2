@@ -1,7 +1,7 @@
 'use strict';
 
 const assert = require('chai').assert;
-const CategoryService = require('./category-service');
+const PoiService = require('./poi-service');
 const fixtures = require('./fixtures.json');
 const _ = require('lodash');
 
@@ -10,66 +10,66 @@ suite('User API tests', function () {
   let users = fixtures.users;
   let newUser = fixtures.newUser;
 
-  const categoryService = new CategoryService(fixtures.categoryService);
+  const poiService = new PoiService(fixtures.poiService);
 
   setup(async function () {
-    await categoryService.deleteAllUsers();
+    await poiService.deleteAllUsers();
   });
 
   teardown(async function () {
-    await categoryService.deleteAllUsers();
+    await poiService.deleteAllUsers();
   });
 
   test('create a user', async function () {
-    const returnedUser = await categoryService.createUser(newUser);
+    const returnedUser = await poiService.createUser(newUser);
     assert(_.some([returnedUser], newUser), 'returnedUser must be a superset of newUser');
     assert.isDefined(returnedUser._id);
   });
 
   test('get user', async function () {
-    const u1 = await categoryService.createUser(newUser);
-    const u2 = await categoryService.getUser(u1._id);
+    const u1 = await poiService.createUser(newUser);
+    const u2 = await poiService.getUser(u1._id);
     assert.deepEqual(u1, u2);
   });
 
   test('get invalid user', async function () {
-    const u1 = await categoryService.getUser('1234');
+    const u1 = await poiService.getUser('1234');
     assert.isNull(u1);
-    const u2 = await categoryService.getUser('012345678901234567890123');
+    const u2 = await poiService.getUser('012345678901234567890123');
     assert.isNull(u2);
   });
 
 
   test('delete a user', async function () {
-    let u = await categoryService.createUser(newUser);
+    let u = await poiService.createUser(newUser);
     assert(u._id != null);
-    await categoryService.deleteOneUser(u._id);
-    u = await categoryService.getUser(u._id);
+    await poiService.deleteOneUser(u._id);
+    u = await poiService.getUser(u._id);
     assert(u == null);
   });
 
   test('get all users', async function () {
     for (let u of users) {
-      await categoryService.createUser(u);
+      await poiService.createUser(u);
     }
 
-    const allUsers = await categoryService.getUsers();
+    const allUsers = await poiService.getUsers();
     assert.equal(allUsers.length, users.length);
   });
 
   test('get users detail', async function () {
     for (let u of users) {
-      await categoryService.createUser(u);
+      await poiService.createUser(u);
     }
 
-    const allUsers = await categoryService.getUsers();
+    const allUsers = await poiService.getUsers();
     for (var i = 0; i < users.length; i++) {
       assert(_.some([allUsers[i]], users[i]), 'returnedUser must be a superset of newUser');
     }
   });
 
   test('get all users empty', async function () {
-    const allUsers = await categoryService.getUsers();
+    const allUsers = await poiService.getUsers();
     assert.equal(allUsers.length, 0);
   });
 
