@@ -86,12 +86,12 @@ const Poi = {
             }
         },
 
-       //TypeError: Cannot read property 'id' of null
+
 
 
 };
 
-//deletePoi.findByIdAndDelete({ id: user._id });
+
 
 
 module.exports = Poi;

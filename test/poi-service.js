@@ -82,27 +82,27 @@ async deleteOneCategory(id) {
   return response.data;
 }
 
-  async makePoi(id, poi) {
+  async makePoiDetail(id, poiDetail) {
     try {
-      const response = await axios.post(this.baseUrl + '/api/categories/' + id + '/pois', poi);
+      const response = await axios.post(this.baseUrl + '/api/categories/' + id + '/poi', poiDetail);
       return response.data;
     } catch (e) {
       return null;
     }
   }
 
-  async getPois(id) {
+  async getPoi(id) {
     try {
-      const response = await axios.get(this.baseUrl + '/api/categories/' + id + '/pois');
+      const response = await axios.get(this.baseUrl + '/api/categories/' + id + '/poi');
       return response.data;
     } catch (e) {
       return null;
     }
   }
 
-  async deleteAllPois() {
+  async deleteAllPoi() {
     try {
-      const response = await axios.delete(this.baseUrl + '/api/pois');
+      const response = await axios.delete(this.baseUrl + '/api/poi');
       return response.data;
     } catch (e) {
       return null;

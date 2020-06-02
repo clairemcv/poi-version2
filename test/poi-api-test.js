@@ -6,50 +6,50 @@ const fixtures = require('./fixtures.json');
 const _ = require('lodash');
 
 suite('Poi API tests', function () {
-  let pois = fixtures.pois;
+  let poi = fixtures.poi;
   let newCategory = fixtures.newCategory;
 
   const poiService = new PoiService(fixtures.poiService);;
 
   setup(async function() {
     poiService.deleteAllCategories();
-    poiService.deleteAllPois();
+    poiService.deleteAllPoi();
   });
 
   teardown(async function() {});
 
-  test('create a poi', async function() {
+  test('create a poiDetail', async function() {
     const returnedCategory = await poiService.createCategory(newCategory);
-    await poiService.makePoi(returnedCategory._id, pois[0]);
-    const returnedPois = await poiService.getPois(returnedCategory._id);
-    console.log(returnedPois);
-    assert.equal(returnedPois.length, 1);
-    assert(_.some([returnedPois[0]], pois[0]), 'returned poi must be a superset of poi');
+    await poiService.makePoiDetail(returnedCategory._id, poi[0]);
+    const returnedPoi = await poiService.getPoi(returnedCategory._id);
+    console.log(returnedPoi);
+    assert.equal(returnedPoi.length, 1);
+    assert(_.some([returnedPoi[0]], poi[0]), 'returned poiDetail must be a superset of poiDetail');
   });
 
   test('create multiple poi', async function() {
     const returnedCategory = await poiService.createCategory(newCategory);
-    for (var i = 0; i < pois.length; i++) {
-      await poiService.makePoi(returnedCategory._id, pois[i]);
+    for (var i = 0; i < poi.length; i++) {
+      await poiService.makePoiDetail(returnedCategory._id, poi[i]);
     }
 
-    const returnedPoi = await poiService.getPois(returnedCategory._id);
-    assert.equal(returnedPois.length, pois.length);
-    for (var i = 0; i < pois.length; i++) {
-      assert(_.some([returnedPois[i]], pois[i]), 'returned poi must be a superset of poi');
+    const returnedPoi = await poiService.getPoi(returnedCategory._id);
+    assert.equal(returnedPoi.length, poi.length);
+    for (var i = 0; i < poi.length; i++) {
+      assert(_.some([returnedPoi[i]], poi[i]), 'returned poiDetail must be a superset of poiDetail');
     }
   });
 
-  test('delete all pois', async function() {
+  test('delete all poi', async function() {
     const returnedCategory = await poiService.createCategory(newCategory);
-    for (var i = 0; i < pois.length; i++) {
-      await poiService.makePoi(returnedCategory._id, pois[i]);
+    for (var i = 0; i < poi.length; i++) {
+      await poiService.makePoiDetail(returnedCategory._id, poi[i]);
     }
 
-    const d1 = await poiService.getPois(returnedCategory._id);
-    assert.equal(d1.length, pois.length);
-    await poiService.deleteAllPois();
-    const d2 = await poiService.getPois(returnedCategory._id);
+    const d1 = await poiService.getPoi(returnedCategory._id);
+    assert.equal(d1.length, poi.length);
+    await poiService.deleteAllPoi();
+    const d2 = await poiService.getPoi(returnedCategory._id);
     assert.equal(d2.length, 0);
   });
 });

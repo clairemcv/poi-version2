@@ -35,8 +35,14 @@
   {
     "title": "Beauty Spot"
   },
+  "newUser": {
+    "firstName": "May",
+    "lastName": "Spencer",
+    "email": "may@email.com",
+    "password": "secret"
+  },
 
-  "pois": [
+  "poi": [
    {
      "name": "Cheek Point",
      "location": "Waterford",
