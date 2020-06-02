@@ -1,34 +1,34 @@
 'use strict';
 
-const PoiDetail = require('../models/poidetail');
+const Poi = require('../models/poidetail');
 const Boom = require('@hapi/boom');
 
-const Poi = {
+const Pois = {
   findAll: {
     auth: false,
     handler: async function(request, h) {
-      const poi = await PoiDetail.find();
-      return poi;
+      const pois = await Poi.find();
+      return pois;
     }
   },
   findByCategory: {
     auth: false,
     handler: async function(request, h) {
-      const poi = await PoiDetail.find({ category: request.params.id });
-      return poi;
+      const pois = await Poi.find({ category: request.params.id });
+      return pois;
     }
   },
-  makePoiDetail: {
+  makePoi: {
     auth: false,
     handler: async function(request, h) {
-      let poiDetail = new poiDetail(request.payload);
+      let poi = new poi(request.payload);
       const category = await Category.findOne({ _id: request.params.id });
       if (!category) {
-        return Boom.notFound('No Candidate with this id');
+        return Boom.notFound('No Category with this id');
       }
-      poiDetail.category = category._id;
-      poiDetail = await poiDetail.save();
-      return poiDetail;
+      poi.category = category._id;
+      poi = await poi.save();
+      return poi;
     }
   },
 
@@ -36,10 +36,10 @@ const Poi = {
   deleteAll: {
     auth: false,
     handler: async function(request, h) {
-      await PoiDetail.deleteMany({});
+      await Poi.deleteMany({});
       return { success: true };
     }
   }
 
 };
-module.exports = Poi;
+module.exports = Pois;

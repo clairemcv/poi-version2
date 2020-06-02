@@ -1,5 +1,5 @@
 {
-  "categoryService": "http://localhost:3000",
+  "poiService": "http://localhost:3000",
   "users": [
     {
       "firstName": "Mary",
@@ -36,8 +36,7 @@
     "title": "Beauty Spot"
   },
 
-  "poiService": "http://localhost:3000",
-  "poi": [
+  "pois": [
    {
      "name": "Cheek Point",
      "location": "Waterford",
@@ -53,12 +52,6 @@
      "location": "Wexford",
      "description":"This is a beautiful island. Grazed and easily walked or camped on, this island is lovely and deservedly popular with Irish paddlers. The island is a famed bird-watching spot, and is often inhabited by birding visitors in season, mainly spring and autumn. Once inhabited by 20 people, the island became uninhabited relatively early by Irish island standards. There are monuments and references to Prince Michael of Saltee on the island. He bought the island in 1943, crowned himself Prince in 1972, and died in 1998."
   }
-    ],
-  "newPoiDetail":
-  {
-    "name": "Dunmore East",
-    "location": "Waterford",
-    "description":"Dunmore East is a popular tourist and fishing village in County Waterford, Ireland. Situated on the west side of Waterford Harbour on Ireland's southeastern coast, it lies within the barony of Gaultier, a reference to the influx of Viking and Norman settlers in the area."
-  }
+    ]
 
 }

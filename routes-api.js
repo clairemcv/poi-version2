@@ -11,7 +11,7 @@ module.exports = [
 
   { method: 'GET', path: '/api/poi', config: Poi.findAll },
   { method: 'GET', path: '/api/categories/{id}/poi', config: Poi.findByCategory },
-  { method: 'POST', path: '/api/categories/{id}/poi', config: Poi.makePoiDetail },//makeDonation
+  { method: 'POST', path: '/api/categories/{id}/poi', config: Poi.makePoi },//makeDonation
   { method: 'DELETE', path: '/api/poi', config: Poi.deleteAll },
   //{ method: 'GET', path: '/api/pois/{id}', config: Pois.findOne },
   //{ method: 'POST', path: '/api/pois', config: Pois.create },

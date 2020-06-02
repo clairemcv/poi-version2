@@ -6,25 +6,51 @@ const fixtures = require('./fixtures.json');
 const _ = require('lodash');
 
 suite('Poi API tests', function () {
-
-  let poi = fixtures.poi;
-  let newPoiDetail = fixtures.newPoiDetail;
+  let pois = fixtures.pois;
+  let newCategory = fixtures.newCategory;
 
   const poiService = new PoiService(fixtures.poiService);;
 
   setup(async function() {
-    poiService.deleteAllPoiDetail();
-    poiService.deleteAllPoi();
+    poiService.deleteAllCategories();
+    poiService.deleteAllPois();
   });
 
   teardown(async function() {});
 
   test('create a poi', async function() {
-    const returnedPoiDetail = await poiService.makePoiDetail(newPoiDetail);
-    await poiService.makePoiDetail(returnedPoiDetail._id, poi[0]);
-    const returnedPoi = await poiService.getPoi(returnedPoiDetail._id);
-    assert.equal(returnedPoi.length, 1);
-    assert(_.some([returnedPoi[0]], poi[0]), 'returned poiDetail must be a superset of poiDetail');
+    const returnedCategory = await poiService.createCategory(newCategory);
+    await poiService.makePoi(returnedCategory._id, pois[0]);
+    const returnedPois = await poiService.getPois(returnedCategory._id);
+    console.log(returnedPois);
+    assert.equal(returnedPois.length, 1);
+    assert(_.some([returnedPois[0]], pois[0]), 'returned poi must be a superset of poi');
   });
 
+  test('create multiple poi', async function() {
+    const returnedCategory = await poiService.createCategory(newCategory);
+    for (var i = 0; i < pois.length; i++) {
+      await poiService.makePoi(returnedCategory._id, pois[i]);
+    }
+
+    const returnedPoi = await poiService.getPois(returnedCategory._id);
+    assert.equal(returnedPois.length, pois.length);
+    for (var i = 0; i < pois.length; i++) {
+      assert(_.some([returnedPois[i]], pois[i]), 'returned poi must be a superset of poi');
+    }
+  });
+
+  test('delete all pois', async function() {
+    const returnedCategory = await poiService.createCategory(newCategory);
+    for (var i = 0; i < pois.length; i++) {
+      await poiService.makePoi(returnedCategory._id, pois[i]);
+    }
+
+    const d1 = await poiService.getPois(returnedCategory._id);
+    assert.equal(d1.length, pois.length);
+    await poiService.deleteAllPois();
+    const d2 = await poiService.getPois(returnedCategory._id);
+    assert.equal(d2.length, 0);
+  });
 });
+
