@@ -54,11 +54,14 @@ class PoiService {
   }
 
  async getCategories() {
-  const response = await axios.get(this.baseUrl + '/api/categories');
-  return response.data;
+  try {
+    const response = await axios.get(this.baseUrl + '/api/categories');
+    return response.data;
+  } catch (e) {
+    return null;
+  }
 }
-
-async getCategory(id) {
+ async getCategory(id) {
   try {
     const response = await axios.get(this.baseUrl + '/api/categories/' + id);
     return response.data;
@@ -67,20 +70,33 @@ async getCategory(id) {
   }
 }
 
-async createCategory(newCategory) {
-  const response = await axios.post(this.baseUrl + '/api/categories', newCategory);
-  return response.data;
+ async createCategory(newCategory) {
+  try {
+    const response = await axios.post(this.baseUrl + '/api/categories', newCategory);
+    return response.data;
+  } catch (e) {
+    return null;
+  }
 }
 
 async deleteAllCategories() {
-  const response = await axios.delete(this.baseUrl + '/api/categories');
-  return response.data;
+    try{
+      const response = await axios.delete(this.baseUrl + '/api/categories');
+      return response.data;
+    } catch (e) {
+    return null;
+  }
 }
 
-async deleteOneCategory(id) {
-  const response = await axios.delete(this.baseUrl + '/api/categories/' + id);
-  return response.data;
-}
+ async deleteOneCategory(id) {
+    try {
+      const response = await axios.delete(this.baseUrl + '/api/categories/' + id);
+      return response.data;
+    } catch (e) {
+      return null;
+    }
+  }
+
 
   async makePoiDetail(id, poiDetail) {
     try {
@@ -108,6 +124,21 @@ async deleteOneCategory(id) {
       return null;
     }
   }
+
+  async authenticate(user) {
+    try {
+      const response = await axios.post(this.baseUrl + '/api/users/authenticate', user);
+      axios.defaults.headers.common['Authorization'] = 'Bearer ' + response.data.token;
+      return response.data;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  async clearAuth(user) {
+    axios.defaults.headers.common['Authorization'] = '';
+  }
+
 };
 
 module.exports = PoiService;

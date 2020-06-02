@@ -1,8 +1,6 @@
 'use strict';
 
 
-//import * as poiDetail from "mongoose/lib/model";
-
 const PoiDetail = require('../models/poidetail');
 const User = require('../models/user');
 const Category = require('../models/category');

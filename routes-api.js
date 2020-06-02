@@ -13,14 +13,13 @@ module.exports = [
   { method: 'GET', path: '/api/categories/{id}/poi', config: Poi.findByCategory },
   { method: 'POST', path: '/api/categories/{id}/poi', config: Poi.makePoiDetail },//makeDonation
   { method: 'DELETE', path: '/api/poi', config: Poi.deleteAll },
-  //{ method: 'GET', path: '/api/pois/{id}', config: Pois.findOne },
-  //{ method: 'POST', path: '/api/pois', config: Pois.create },
-  //{ method: 'DELETE', path: '/api/pois/{id}', config: Pois.deleteOne },
-  //{ method: 'DELETE', path: '/api/pois', config: Pois.deleteAll },
+
 
   { method: 'GET', path: '/api/users', config: Users.find },
   { method: 'GET', path: '/api/users/{id}', config: Users.findOne },
   { method: 'POST', path: '/api/users', config: Users.create },
   { method: 'DELETE', path: '/api/users/{id}', config: Users.deleteOne },
-  { method: 'DELETE', path: '/api/users', config: Users.deleteAll }
+  { method: 'DELETE', path: '/api/users', config: Users.deleteAll },
+
+  { method: 'POST', path: '/api/users/authenticate', config: Users.authenticate }
 ];

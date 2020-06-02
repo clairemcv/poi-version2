@@ -3,24 +3,31 @@
 const PoiDetail = require('../models/poidetail');
 const Boom = require('@hapi/boom');
 const Category = require('../models/category');
+const utils = require('./utils.js');
 
 const Poi = {
   findAll: {
-    auth: false,
+    auth: {
+      strategy: 'jwt',
+    },
     handler: async function(request, h) {
       const poi = await PoiDetail.find();
       return poi;
     }
   },
   findByCategory: {
-    auth: false,
+    auth: {
+      strategy: 'jwt',
+    },
     handler: async function(request, h) {
       const poi = await PoiDetail.find({ category: request.params.id });
       return poi;
     }
   },
   makePoiDetail: {
-    auth: false,
+    auth: {
+      strategy: 'jwt',
+    },
     handler: async function(request, h) {
       let poiDetail = new PoiDetail(request.payload);
       const category = await Category.findOne({ _id: request.params.id });
@@ -35,7 +42,9 @@ const Poi = {
 
 
   deleteAll: {
-    auth: false,
+    auth: {
+      strategy: 'jwt',
+    },
     handler: async function(request, h) {
       await PoiDetail.deleteMany({});
       return { success: true };
