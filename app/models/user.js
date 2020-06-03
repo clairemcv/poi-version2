@@ -12,11 +12,14 @@ const userSchema = new Schema({
     password: String
 });
 
+//public List<Playlist> playlists = new ArrayList<Playlist>(); I need this is javascript poidetail
+
+
 userSchema.statics.findByEmail = function(email) {
     return this.findOne({ email : email});
 };
 
-userSchema.methods.comparePassword = async function(candidatePassword) {        // EDITED
+userSchema.methods.comparePassword = async function(candidatePassword) {
     const isMatch = await bcrypt.compare(candidatePassword, this.password);
     return isMatch;
 };

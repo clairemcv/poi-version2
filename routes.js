@@ -1,6 +1,7 @@
 'use strict';
 
 const Accounts = require('./app/controllers/accounts');
+const Dashboard = require("./app/controllers/dashboard.js");
 const Poi = require('./app/controllers/poi');
 const Gallery = require('./app/controllers/gallery');
 
@@ -18,8 +19,13 @@ module.exports = [
     { method: 'GET', path: '/home', config: Poi.home },
     { method: 'GET', path: '/locations', config: Poi.locations },
     { method: 'GET', path: '/gallery', config: Poi.gallery},
-    { method: 'GET', path: '/deleteOne/{id}', config: Poi.deleteOne },
-    { method: 'POST', path: '/createPoi', config: Poi.createPoi },
+    //{ method: 'GET', path: '/deleteOne/{id}', config: Poi.deleteOne },
+   // { method: 'POST', path: '/createPoi', config: Poi.createPoi },
+
+    //{ method: 'GET', path: '/dashboard', config: Dashboard.index },
+    { method: 'GET', path: '/deleteOne/{id}', config: Dashboard.deleteOne },
+    { method: 'POST', path: '/addPoi', config: Dashboard.addPoi },
+
 
 
     { method: 'POST', path: '/uploadfile', config: Gallery.uploadFile },
@@ -34,7 +40,9 @@ module.exports = [
                 }
             },
             options: { auth: false }
-        }
+        },
+
+
 
 
 ];

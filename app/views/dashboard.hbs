@@ -1,0 +1,14 @@
+{{> mainmenu _id="dashboard"}}
+
+{{#each poi}}
+    <section class="ui segment">
+        <h2 class="ui header">
+            {{title}}
+        </h2>
+        <p> Total Duration: {{duration}} </p>
+        <a href="/playlist/{{id}}"> View </a>
+    </section>
+{{/each}}
+
+{{> createpoi }}
+

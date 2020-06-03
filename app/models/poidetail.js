@@ -15,6 +15,7 @@ const poiDetailSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Category',
     },
+
 });
 
 module.exports = Mongoose.model('poi detail', poiDetailSchema);

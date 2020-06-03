@@ -3,7 +3,7 @@
             <div class="ui stacked segment">
         <article class="fifteen wide column">
             <table class="ui celled table segment">
-                <form action="/deleteOne" method="GET">
+                <form action="/dashboard/deleteOne" method="GET">
                 <thead>
                 <tr>
                     <th>Created by</th>
@@ -18,7 +18,7 @@
                   {{#each poi}}
                     <tr>
                         <td>{{creator.firstName}} {{creator.lastName}}</td>
-                        <td> {{name}} </td>
+                        <td> {{name}}</td>
                         <td> {{location}} </td>
                         <td> {{description}}</td>
                         <td> {{category.title}}</td>
@@ -34,4 +34,6 @@
     </div>
 </section>
 </section>
-
+<script>
+    $("${_id}").addClass("active item");
+</script>

@@ -20,7 +20,7 @@ const Poi = {
     locations: {
         handler: async function(request, h)  {
             try {
-                const poi = await PoiDetail.find().populate('creator').populate('category').lean();
+                const poi = await PoiDetail.find().populate('creator').populate('category').populate('User').lean();
                 return h.view('locations', {
                     title: 'Locations to Date',
                     poi: poi
@@ -59,16 +59,6 @@ const Poi = {
         }
     },
 
-    deleteOne: {
-        auth: false,
-        handler: async function(request, h) {
-            const poiDetail = await PoiDetail.deleteOne({ _id: request.params.id });
-            if (poiDetail) {
-                return h.redirect('/locations');
-            }
-            return Boom.notFound('id not found');
-        }
-    },
 
     gallery: {
             handler: async function(request, h) {
@@ -83,8 +73,6 @@ const Poi = {
                 }
             }
         },
-
-
 
 
 };
