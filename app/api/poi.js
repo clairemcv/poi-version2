@@ -29,12 +29,14 @@ const Poi = {
       strategy: 'jwt',
     },
     handler: async function(request, h) {
+      const userId = utils.getUserIdFromRequest(request);
       let poiDetail = new PoiDetail(request.payload);
       const category = await Category.findOne({ _id: request.params.id });
       if (!category) {
         return Boom.notFound('No Category with this id');
       }
       poiDetail.category = category._id;
+      poiDetail.creator = userId;
       poiDetail = await poiDetail.save();
       return poiDetail;
     }

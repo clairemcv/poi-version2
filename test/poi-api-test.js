@@ -65,5 +65,15 @@ suite('Poi API tests', function () {
     const d2 = await poiService.getPoi(returnedCategory._id);
     assert.equal(d2.length, 0);
   });
+
+  test('create a poiDetail and check creator', async function() {
+    const returnedCategory = await poiService.createCategory(newCategory);
+    await poiService.makePoiDetail(returnedCategory ._id, poi[0]);
+    const returnedPoi = await poiService.getPoi(returnedCategory ._id);
+    assert.isDefined(returnedPoi[0].creator);
+
+    const users = await poiService.getUsers();
+    assert(_.some([users[0]], newUser), 'returnedUser must be a superset of newUser');
+  });
 });
 
