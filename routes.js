@@ -17,14 +17,14 @@ module.exports = [
     { method: 'POST', path: '/settings', config: Accounts.updateSettings },
 
     { method: 'GET', path: '/home', config: Poi.home },
-    { method: 'GET', path: '/locations', config: Poi.locations },
+    { method: 'GET', path: '/dashboard', config: Poi.dashboard }, // was locations
     { method: 'GET', path: '/gallery', config: Poi.gallery},
     //{ method: 'GET', path: '/deleteOne/{id}', config: Poi.deleteOne },
-   // { method: 'POST', path: '/createPoi', config: Poi.createPoi },
+    { method: 'POST', path: '/createPoi', config: Poi.createPoi },
 
-    //{ method: 'GET', path: '/dashboard', config: Dashboard.index },
+    { method: 'GET', path: '/index', config: Dashboard.index },
     { method: 'GET', path: '/deleteOne/{id}', config: Dashboard.deleteOne },
-    { method: 'POST', path: '/addPoi', config: Dashboard.addPoi },
+    //{ method: 'POST', path: '/createPoi', config: Dashboard.createPoi },
 
 
 

@@ -15,7 +15,20 @@ const poiDetailSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Category',
     },
-
 });
+
+
+  poiDetailSchema.statics.findByCreator = function(creator) {
+        return this.findOne({ creator : creator});
+    };
+/*
+    userSchema.methods.comparePassword = async function(candidatePassword) {
+        const isMatch = await bcrypt.compare(candidatePassword, this.password);
+        return isMatch;
+    };
+*/
+
+
+
 
 module.exports = Mongoose.model('poi detail', poiDetailSchema);

@@ -17,13 +17,16 @@ const Poi = {
             return h.view('home', { title: 'Add a POI', categories: categories });
         }
     },
-    locations: {
+    dashboard: { //was locations
         handler: async function(request, h)  {
             try {
                 const poi = await PoiDetail.find().populate('creator').populate('category').populate('User').lean();
-                return h.view('locations', {
-                    title: 'Locations to Date',
-                    poi: poi
+                const id = request.auth.credentials.id; //
+                const user = await User.findById(id);//
+                return h.view('dashboard', { //was locations
+                    title: 'Dashboard to Date',
+                    poi: poi,
+                    user: user
                 });
             } catch (err) {
                 return h.view('main', { errors: [{ message: err.message }] });
@@ -40,8 +43,8 @@ const Poi = {
 
                 const rawCategory = request.payload.category;
                 const category = await Category.findOne({
-                   title: rawCategory
-               });
+                    title: rawCategory
+                });
 
                 const newPoiDetail = new PoiDetail({
                     name: data.name,
@@ -52,13 +55,25 @@ const Poi = {
 
                 });
                 await newPoiDetail.save();
-                return h.redirect('/locations');
+                return h.redirect('/dashboard'); //this was locations
             } catch (err) {
                 return h.view('main', {errors: [{message: err.message}]});
             }
         }
     },
 
+
+
+    deleteOne: {
+        auth: false,
+        handler: async function(request, h) {
+            const poiDetail = await PoiDetail.deleteOne({ _id: request.params.id });
+            if (poiDetail) {
+                return h.redirect('/dashboard');
+            }
+            return Boom.notFound('id not found');
+        }
+    },
 
     gallery: {
             handler: async function(request, h) {
