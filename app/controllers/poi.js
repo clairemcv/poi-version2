@@ -23,6 +23,7 @@ const Poi = {
             const _id = request.params.id
             const id = request.auth.credentials.id;
             const user = await User.findById(id).lean();
+            
            // const userPoi = user.poiDetail;
             //request.cookieAuth.set({ id: user.id })
             try {
