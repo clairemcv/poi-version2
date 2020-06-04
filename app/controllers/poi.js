@@ -4,10 +4,11 @@
 const PoiDetail = require('../models/poidetail');
 const User = require('../models/user');
 const Category = require('../models/category');
+const Accounts = require("./accounts.js");
 //const Joi = require('@hapi/joi');
 const ImageStore = require('../utils/image-store');
 const Boom = require('@hapi/boom');
-
+//({ id: user.id })
 
 
 const Poi = {
@@ -19,20 +20,27 @@ const Poi = {
     },
     dashboard: { //was locations
         handler: async function(request, h)  {
+            const _id = request.params.id
+            const id = request.auth.credentials.id;
+            const user = await User.findById(id).lean();
+           // const userPoi = user.poiDetail;
+            //request.cookieAuth.set({ id: user.id })
             try {
-                const poi = await PoiDetail.find().populate('creator').populate('category').populate('User').lean();
-                const id = request.auth.credentials.id; //
-                const user = await User.findById(id);//
-                return h.view('dashboard', { //was locations
-                    title: 'Dashboard to Date',
-                    poi: poi,
-                    user: user
-                });
+                if (user === user) {
+                    const poi = await PoiDetail.find().populate('creator').populate('category').lean();
+                    return h.view('dashboard', { //was locations
+                        title: 'Your Dashboard',
+                        poi: poi,
+
+                    });
+                }
             } catch (err) {
-                return h.view('main', { errors: [{ message: err.message }] });
+                    return h.view('main', {errors: [{message: err.message}]});
+                }
             }
-        }
-    },
+        },
+
+
 
     createPoi: {
         handler: async function (request, h) {

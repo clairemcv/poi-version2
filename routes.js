@@ -19,11 +19,11 @@ module.exports = [
     { method: 'GET', path: '/home', config: Poi.home },
     { method: 'GET', path: '/dashboard', config: Poi.dashboard }, // was locations
     { method: 'GET', path: '/gallery', config: Poi.gallery},
-    //{ method: 'GET', path: '/deleteOne/{id}', config: Poi.deleteOne },
+    { method: 'GET', path: '/deleteOne/{id}', config: Poi.deleteOne },
     { method: 'POST', path: '/createPoi', config: Poi.createPoi },
 
-    { method: 'GET', path: '/index', config: Dashboard.index },
-    { method: 'GET', path: '/deleteOne/{id}', config: Dashboard.deleteOne },
+    //{ method: 'GET', path: '/index', config: Dashboard.index },
+   // { method: 'GET', path: '/deleteOne/{id}', config: Dashboard.deleteOne },
     //{ method: 'POST', path: '/createPoi', config: Dashboard.createPoi },
 
 
