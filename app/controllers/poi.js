@@ -23,11 +23,15 @@ const Poi = {
             const _id = request.params.id
             const id = request.auth.credentials.id;
             const user = await User.findById(id).lean();
+            const loggedInUser = Accounts.login;
+            const poiUser = await PoiDetail({ _id: request.params.id });
+            //const poiDetail = poiDetail.findByCreator({ creator : creator});
+
             
            // const userPoi = user.poiDetail;
             //request.cookieAuth.set({ id: user.id })
             try {
-                if (user === user) {
+                if (loggedInUser.id || poiUser._id) {
                     const poi = await PoiDetail.find().populate('creator').populate('category').lean();
                     return h.view('dashboard', { //was locations
                         title: 'Your Dashboard',
