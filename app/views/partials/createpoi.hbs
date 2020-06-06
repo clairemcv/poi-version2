@@ -3,6 +3,7 @@
         <aside class="ui six wide column"><img src="images/poi.jpg" class="ui medium image" /></aside>
         <div class="ui ten wide column fluid form">
 
+
              <form action="/createPoi" method="POST">
                     <form class="ui form">
                         <div class="field">
@@ -18,15 +19,16 @@
                             <input type="text" name="description" placeholder="Description" size="200">
                         </div>
 
-                            <h4 class="ui dividing header"> Enter Coordinates </h4>
-                            <div class="two fields">
-                                <div class="field">
-                                    <label>Latitude</label> <input placeholder="00.000000" value.bind="location.lat"/>
-                                </div>
-                                <div class="field">
-                                    <label>Longitude</label> <input placeholder="00.000000" value.bind="location.lng"/>
-                                </div>
+                        <h4 class="ui dividing header"> Enter Map Co-ordinates </h4>
+
+                        <div class="two fields">
+                            <div class="field">
+                                <label>Latitude</label> <input type="number" placeholder="00.000000" name="map"/>
                             </div>
+                            <div class="field">
+                                <label>Longitude</label> <input type="number" placeholder="00.000000" name="map"/>
+                            </div>
+                        </div>
 
                         <div class="grouped inline fields">
                             <h3> Select Category </h3>

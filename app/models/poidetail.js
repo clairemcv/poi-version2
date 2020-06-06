@@ -15,8 +15,11 @@ const poiDetailSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Category',
     },
+    map:  {
+       type: Schema.Types.ObjectId,
+       ref: 'Map',
+  },
 });
-
 
   poiDetailSchema.statics.findByCreator = function(creator) {
         return this.findOne({ creator : creator});

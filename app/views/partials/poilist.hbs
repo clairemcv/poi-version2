@@ -11,6 +11,7 @@
                     <th>Location</th>
                     <th>Description</th>
                     <th>Category</th>
+                    <th>Map</th>
                     <th>Delete</th>
                 </tr>
                 </thead>
@@ -22,6 +23,7 @@
                         <td> {{location}} </td>
                         <td> {{description}}</td>
                         <td> {{category.title}}</td>
+                        <td> {{map.lat}} {{map.lng}}</td>
                         <td><a href="/deleteOne/{{_id}}" button class="ui icon submit button">
                                 <i class="icon trash"></i>
                             </a>
