@@ -29,6 +29,7 @@ module.exports = [
 
 
     { method: 'POST', path: '/uploadfile', config: Gallery.uploadFile },
+    { method: 'GET', path: '/deleteimage', config: Gallery.deleteImage },
 
 
         {
