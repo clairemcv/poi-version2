@@ -12,7 +12,7 @@ const userSchema = new Schema({
     password: String
 });
 
-//public List<Playlist> playlists = new ArrayList<Playlist>(); I need this is javascript poidetail
+
 
 
 userSchema.statics.findByEmail = function(email) {

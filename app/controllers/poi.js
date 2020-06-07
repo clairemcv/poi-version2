@@ -9,7 +9,6 @@ const Accounts = require("./accounts.js");
 const Joi = require('@hapi/joi');
 const ImageStore = require('../utils/image-store');
 const Boom = require('@hapi/boom');
-//({ id: user.id })
 
 
 const Poi = {
@@ -26,15 +25,12 @@ const Poi = {
             const user = await User.findById(id).lean();
             const loggedInUser = Accounts.getCurrentUser;
           //  const Userpoi = Accounts.getUserPoi;
-        
+
             const poiUserDetail = await PoiDetail.findById(_id)
             //const poiDetail = await PoiDetail.deleteOne({ _id: request.params.id })
             //let user = await User.findByEmail(email);
             //const Userpoi = poiDetailSchema.findByCreator({ creator : creator});
 
-            
-           // const userPoi = user.poiDetail;
-            //request.cookieAuth.set({ id: user.id })
             try {
                 if (loggedInUser) {
                   const poi = await PoiDetail.find().populate('creator').populate('category').populate('map').lean();
