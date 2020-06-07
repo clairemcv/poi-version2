@@ -7,6 +7,7 @@ const poiDetailSchema = new Schema({
     name: String,
     location: String,
     description: String,
+
     creator: {
         type: Schema.Types.ObjectId,
         ref: 'User'

@@ -4,6 +4,7 @@ const Accounts = require("./accounts.js");
 const PoiDetail = require('../models/poidetail');
 const User = require('../models/user');
 const Category = require('../models/category');
+const Map = require('../models/map');
 
 const Dashboard = {
   index: {
@@ -19,7 +20,6 @@ const Dashboard = {
       }
     }
   },
-
 
 
   deleteOne: {

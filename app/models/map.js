@@ -8,8 +8,11 @@ const mapSchema = Schema({
   lng: Number,
 });
 
+
 mapSchema.statics.findByEmail = function(email) {
-  return this.findOne({ email: email });
+  return this.findOne({ email : email});
 };
+
+
 
 module.exports = Mongoose.model('Map', mapSchema);

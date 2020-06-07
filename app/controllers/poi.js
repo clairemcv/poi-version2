@@ -21,22 +21,28 @@ const Poi = {
     },
     dashboard: { //was locations
         handler: async function(request, h)  {
-            const _id = request.params.id
+            const _id = request.params.id;
             const id = request.auth.credentials.id;
             const user = await User.findById(id).lean();
-            const loggedInUser = Accounts.login;
-            const poiUser = await PoiDetail({ _id: request.params.id });
-            //const poiDetail = poiDetail.findByCreator({ creator : creator});
+            const loggedInUser = Accounts.getCurrentUser;
+          //  const Userpoi = Accounts.getUserPoi;
+        
+            const poiUserDetail = await PoiDetail.findById(_id)
+            //const poiDetail = await PoiDetail.deleteOne({ _id: request.params.id })
+            //let user = await User.findByEmail(email);
+            //const Userpoi = poiDetailSchema.findByCreator({ creator : creator});
 
             
            // const userPoi = user.poiDetail;
             //request.cookieAuth.set({ id: user.id })
             try {
-                if (loggedInUser.id || poiUser._id) {
-                    const poi = await PoiDetail.find().populate('creator').populate('category').populate('map').lean();
+                if (loggedInUser) {
+                  const poi = await PoiDetail.find().populate('creator').populate('category').populate('map').lean();
                     return h.view('dashboard', { //was locations
                         title: 'Your Dashboard',
                         poi: poi,
+                        poiUserDetail: poiUserDetail,
+
 
                     });
                 }
@@ -52,15 +58,18 @@ const Poi = {
         handler: async function (request, h) {
             try {
                 const id = request.auth.credentials.id;
-                const user = await User.findById(id);
+                const user = await User.findById(id); //this is creator
                 const data = request.payload;
-               // const category = await Category.findById(id);
-                //const map = await Map.findById(id);
 
                 const rawCategory = request.payload.category;
                 const category = await Category.findOne({
                     title: rawCategory
                 });
+
+                /*const map = await Map.find({
+                    lat: Map[0],
+                    lng: Map[1]
+                });*/
 
                 const newPoiDetail = new PoiDetail({
                     name: data.name,
@@ -70,6 +79,8 @@ const Poi = {
                     category: category._id,
                     lat: data.lat,
                     lng: data.lng
+
+
                 });
                 await newPoiDetail.save();
                 return h.redirect('/dashboard'); //this was locations

@@ -18,7 +18,7 @@
 <style>
     #mapid { height: 200px; }
 </style>
-<div id="mapid"><aside class="ui six wide column"> </aside></div>
+<div id="mapid"></div>
 <section class="ui container">
     {{{content}}}
 </section>
@@ -30,7 +30,7 @@
             $(this).closest('.message').transition('fade');
         });
 
-    const mymap = L.map('mapid').setView([53.1424, - 7.6921], 8);//latitude, longitude and zoom level
+    const mymap = L.map('mapid').setView([53.1424, - 7.6921], 6);//latitude, longitude and zoom level
     const attribution =
             '&copy; <a href="https://www.openstreetmap.org/copyright"> OpenStreetMap</a> contributors';
 
