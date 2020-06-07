@@ -24,29 +24,28 @@ const Poi = {
             const id = request.auth.credentials.id;
             const user = await User.findById(id).lean();
             const loggedInUser = Accounts.getCurrentUser;
-          //  const Userpoi = Accounts.getUserPoi;
+            const poiDetail = await PoiDetail.find({ _id: request.params.id });
+            //  const Userpoi = Accounts.getUserPoi;
 
-            const poiUserDetail = await PoiDetail.findById(_id)
-            //const poiDetail = await PoiDetail.deleteOne({ _id: request.params.id })
-            //let user = await User.findByEmail(email);
+            //const poiUserDetail = await PoiDetail.findById(_id)
+            //const user = await User.findOne({ email: request.payload.email })
             //const Userpoi = poiDetailSchema.findByCreator({ creator : creator});
 
             try {
-                if (loggedInUser) {
-                  const poi = await PoiDetail.find().populate('creator').populate('category').populate('map').lean();
+                if (user) {
+                    const poi = await PoiDetail.find().populate('creator').populate('category').populate('map').lean();
                     return h.view('dashboard', { //was locations
                         title: 'Your Dashboard',
                         poi: poi,
-                        poiUserDetail: poiUserDetail,
 
 
                     });
                 }
             } catch (err) {
-                    return h.view('main', {errors: [{message: err.message}]});
-                }
+                return h.view('main', {errors: [{message: err.message}]});
             }
-        },
+        }
+    },
 
 
 
