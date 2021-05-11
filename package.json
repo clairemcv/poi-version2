@@ -27,7 +27,7 @@
     "hapi-auth-jwt2": "^10.1.0",
     "jsonwebtoken": "^8.5.1",
     "leaflet": "^1.6.0",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.21",
     "mais-mongoose-seeder": "^1.0.7",
     "mongoose": "^5.9.2",
     "npm-check-updates": "^6.0.1"
